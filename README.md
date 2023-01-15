@@ -1,6 +1,13 @@
 # Planck-Pi-IoT
 复刻稚晖君的Planck-Pi的一些注意事项和说明。
 
+推荐复刻群号如下：
+
+**287810522**
+
+
+![287810522](/Images/287810522.jpg)
+
 ## 前言
 
 复刻Planck-Pi初衷，本人之前对这个小开发板的使用场景没想好，所以一直没有着手复刻，然后最近想到可以拿这个小东西学习嵌入式开发的一些知识，就想复刻一个拿来学习了，刚好社区也有一些人进行了分享，外加这个主控芯片的社区也有一些其他的开发板，所以资料也挺全的就拿来复刻学习了。
@@ -255,6 +262,12 @@ F1C200S芯片属于armv5，所以很多应用并不能直接支持，比如go语
 
 参考文档：
 [How to run ASP.NET 5 Beta 3 or GoLang on a Raspberry Pi 2](https://www.hanselman.com/blog/how-to-run-aspnet-5-beta-3-or-golang-on-a-raspberry-pi-2)
+
+我们需要使用ftp将下载的二进制文件上传到开发板，连接配置如下图：
+
+![ftp](/Images/ftp.png)
+
+成功连接就可以进行文件上传解压和环境变量配置。
 
 运行效果如下：
 ![run-go-on-pi](/Images/run-go-onpi.png)
