@@ -167,6 +167,104 @@ git clone https://github.com/peng-zhihui/Planck-Pi.git
 
 ## 设备登陆和联网
 
+### 1. 系统镜像下载烧录
+
+首先我们可以先到这个网友的网站下载相关的文件作为备用。
+
+https://www.xn--w9q392c0zw.cn/download/Planck%20Pi%20%E7%A8%9A%E6%99%96f1c200s%E8%B5%84%E6%96%99/
+
+![docs](/Images/f1c200s-docs.png)
+
+【PS】由于稚晖君制作的镜像可能会有问题，但是大家还需要Debian镜像，可以从本仓库的发布里下载对应的镜像文件,此镜像为复刻群管理制作，亲测可用。
+
+![debian-img](/Images/debian-image.png)
+
++ balenaEtcher-Setup-1.7.9.exe 程序的安装
++ 本仓库发布镜像下载
++ 准备内存卡并用balenaEtcher烧录
+
+![balena](/Images/balenna.png)
+
+镜像烧录完成以后，插上板子，板子连接到电脑注意正反插，初次使用建议正插，在电脑可以识别出一个串口设备，如果串口设备需要安装驱动大家记得通过网络下载对应的驱动。
+
+![cp210](/Images/cp210.png)
+
+到此板子上的led也会跟着亮起来了，大家就可以通过工具登录系统了。
+
+
+### 2. 相关工具准备
+
++ 串口终端
++ ssh工具
++ ftp工具
+
+我采用的方式是微软开源终端程序，然后使用串口程序插件进行的串口登录和ssh连接。
+
+串口插件地址：
+[SerialPortForWindowsTerminal](https://github.com/Zhou-zhi-peng/SerialPortForWindowsTerminal)
+
+终端配置
+
+![terminal](/Images/terminal-port.png)
+
+串口登录页面
+![port-connect](/Images/port-connect.png)
+
+这个镜像登录没有密码的，所以不用担心进入不了系统。
+
+登录成功以后效果如下：
+
+![connect-ok](/Images/connect-ok-ui.png)
+
+由于此镜像已经把网络配置好，我们不需要特别的配置。
+
+板子IP：192.168.137.2
+
+### 3. 设备联网操作
+
+上面已经通过串口成功登录设备，我们需要反插设备，然后让电脑通过usb共享网络给板子，这样板子就能连接到互联网。
+
+参考稚晖君和其他人的操作，电脑成功安装usb-rndis驱动，网络设备会识别出如下设备。
+
+![usb-rndis](/Images/usb-rndis.png)
+
+在高级网络里我们可以看到多出一个设备。
+
+![usb-network](/Images/usb-network.png)
+
+这个时候我们可以通过ssh登录到板子，但是板子还不能联网。
+
+连接指令：
+```
+ssh root@192.168.137.2
+```
+![ssh-connect](/Images/ssh-connect.png)
+
+我们需要使用此刻电脑使用的网络设备进行网络共享，我目前使用的是wifi设备，可以查看网络属性，然后切换到共享菜单按图上操作。
+
+![network-ok](/Images/network-ok.png)
+
+设置完，板子就能正常ping百度了，效果如下。
+
+![network-ok-ui](/Images/network-ok-ui.png)
+
+
 ## 基础应用环境测试
 
+F1C200S芯片属于armv5，所以很多应用并不能直接支持，比如go语言开发环境，我在测试使用的时候找到一个国外的网友通过源码编译的二进制文件，也进行了安装测试，效果还是可以的，可以进行程序的运行。
+
+参考文档：
+[How to run ASP.NET 5 Beta 3 or GoLang on a Raspberry Pi 2](https://www.hanselman.com/blog/how-to-run-aspnet-5-beta-3-or-golang-on-a-raspberry-pi-2)
+
+运行效果如下：
+![run-go-on-pi](/Images/run-go-onpi.png)
+
 ## 结尾
+
+整体复刻难度不大，但是重点需要我们耐心测试，尤其是测试点电压一定要确保是正常的，不然主控可能会烧毁。
+
+板子很小巧很适合进行嵌入式系统移植的学习，也或者是物联网开发学习。
+
+本人就是看中了它的引脚操作，所以想试着进行学习，目前屏幕的操作还没有人发布代码，未来我会尝试编写屏幕的代码进行屏幕的测试。
+
+**祝大家早日拥有自己的Planck-Pi，有问题可以提问题。**
