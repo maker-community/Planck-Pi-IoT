@@ -131,6 +131,12 @@ git clone https://github.com/peng-zhihui/Planck-Pi.git
 
 [手把手教你制作一块Linux开发板(基于Planck-pi)](https://blog.csdn.net/qq_43257914/article/details/125353029)
 
+**建议准备的工具**
++ 电烙铁
++ 焊台
++ 风枪
++ 万用表
+
 **焊接流程如下：**
 
 先焊接电源部分 => 确保电源测试点电压ok => 进行串口芯片焊接 => 然后就是其余的电容电阻元器件的焊接 => 焊接主控 => 最后再焊接屏幕和排针
