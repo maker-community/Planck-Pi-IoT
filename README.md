@@ -1,6 +1,8 @@
 # Planck-Pi-IoT
 复刻稚晖君的Planck-Pi的一些注意事项和说明。
 
+# [复刻视频讲解](https://www.bilibili.com/video/BV1FG4y1c7Xr/)
+
 推荐复刻群号如下：
 
 **287810522**
